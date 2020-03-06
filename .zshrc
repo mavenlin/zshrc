@@ -1,6 +1,12 @@
 # Path to your oh-my-zsh installation.
   export ZSH=~/.oh-my-zsh
 
+if [ ! -d $ZSH ]; then
+    git clone https://github.com/robbyrussell/oh-my-zsh.git $ZSH
+fi
+if [ ! -f $ZSH/antigen.zsh ]; then
+    curl -L git.io/antigen > $ZSH/antigen.zsh
+fi
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
