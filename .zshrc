@@ -58,7 +58,9 @@ fi
 plugins=(python pip virtualenv)
 
 # User configuration
-source ~/.paths
+if [ -f ~/.paths ]; then
+    source ~/.paths
+fi
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
