@@ -121,3 +121,14 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 
 # Tell Antigen that you're done.
 antigen apply
+
+case `uname` in
+  Darwin)
+    alias emacs='[[ -z `pgrep -l -f "Emacs.*daemon"` ]] && emacs --daemon; emacsclient -c -nw'
+  ;;
+  Linux)
+    alias emacs="emacs -nw"
+  ;;
+esac
+
+export TZ="/usr/share/zoneinfo/Canada/Eastern"
