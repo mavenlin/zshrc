@@ -113,7 +113,6 @@ antigen bundle mafredri/zsh-async
 antigen bundle sindresorhus/pure
 # Syntax highlighting bundle.
 antigen bundle zsh-users/zsh-syntax-highlighting
-
 # Load the theme.
 # antigen theme denysdovhan/spaceship-prompt
 # antigen theme carloscuesta/materialshell materialshell
@@ -122,6 +121,7 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 # Tell Antigen that you're done.
 antigen apply
 
+export VIRTUAL_ENV_DISABLE_PROMPT=12
 case `uname` in
   Darwin)
     alias emacs='[[ -z `pgrep -l -f "Emacs.*daemon"` ]] && emacs --daemon; emacsclient -c -nw'
