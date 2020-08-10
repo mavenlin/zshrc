@@ -57,11 +57,6 @@ fi
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(python pip virtualenv)
 
-# User configuration
-if [ -f ~/.paths ]; then
-    source ~/.paths
-fi
-
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -124,7 +119,7 @@ antigen apply
 export VIRTUAL_ENV_DISABLE_PROMPT=12
 case `uname` in
   Darwin)
-    alias emacs='[[ -z `pgrep -l -f "Emacs.*daemon"` ]] && emacs --daemon; emacsclient -c -nw'
+    alias emacs='[[ -z `pgrep -l -f "emacs --daemon"` ]] && emacs --daemon; emacsclient -c -nw'
   ;;
   Linux)
     alias emacs="emacs -nw"
@@ -132,3 +127,8 @@ case `uname` in
 esac
 
 export TZ="/usr/share/zoneinfo/Canada/Eastern"
+
+# User configuration
+if [ -f ~/.paths ]; then
+    source ~/.paths
+fi
