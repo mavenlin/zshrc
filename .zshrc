@@ -119,7 +119,7 @@ antigen apply
 export VIRTUAL_ENV_DISABLE_PROMPT=12
 case `uname` in
   Darwin)
-    alias emacs='[[ -z `pgrep -l -f "emacs --daemon"` ]] && emacs --daemon; emacsclient -c -nw'
+    alias emacs='[[ -z `pgrep -l -f "emacs.*daemon"` ]] && emacs --daemon; emacsclient -c -nw'
   ;;
   Linux)
     alias emacs="emacs -nw"
