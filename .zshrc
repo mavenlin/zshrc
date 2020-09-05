@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # Path to your oh-my-zsh installation.
   export ZSH=~/.oh-my-zsh
 
@@ -101,28 +108,20 @@ antigen bundle pip
 antigen bundle python
 antigen bundle virtualenv
 
-# Bundles from the default repo (robbyrussell's oh-my-zsh).
-antigen bundle git
-antigen bundle command-not-found
-antigen bundle mafredri/zsh-async
-antigen bundle sindresorhus/pure
 # Syntax highlighting bundle.
 antigen bundle zsh-users/zsh-syntax-highlighting
-# Load the theme.
-# antigen theme denysdovhan/spaceship-prompt
-# antigen theme carloscuesta/materialshell materialshell
-# antigen theme robbyrussell
 
+antigen theme romkatv/powerlevel10k
 # Tell Antigen that you're done.
 antigen apply
 
-export VIRTUAL_ENV_DISABLE_PROMPT=12
+# export VIRTUAL_ENV_DISABLE_PROMPT=12
 case `uname` in
   Darwin)
     alias emacs='[[ -z `pgrep -l -f "emacs.*daemon"` ]] && emacs --daemon; emacsclient -c -nw'
   ;;
   Linux)
-    alias emacs="emacs -nw"
+    alias emacs="emacs -nw" && alias emacs-gui="/usr/bin/emacs"
   ;;
 esac
 
@@ -132,3 +131,6 @@ export TZ="/usr/share/zoneinfo/Canada/Eastern"
 if [ -f ~/.paths ]; then
     source ~/.paths
 fi
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
