@@ -107,11 +107,10 @@ antigen use oh-my-zsh
 antigen bundle pip
 antigen bundle python
 antigen bundle virtualenv
-
-# Syntax highlighting bundle.
-antigen bundle zsh-users/zsh-syntax-highlighting
-
 antigen theme romkatv/powerlevel10k
+# Syntax highlighting bundle.
+# antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle zdharma/fast-syntax-highlighting
 # Tell Antigen that you're done.
 antigen apply
 
