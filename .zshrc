@@ -110,6 +110,7 @@ antigen bundle virtualenv
 antigen theme romkatv/powerlevel10k
 # Syntax highlighting bundle.
 # antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle zsh-users/zsh-completions
 antigen bundle zdharma/fast-syntax-highlighting
 # Tell Antigen that you're done.
 antigen apply
