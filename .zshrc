@@ -127,10 +127,13 @@ esac
 
 export TZ="/usr/share/zoneinfo/Canada/Eastern"
 
-# User configuration
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+ZSHRC_DIR=$(dirname $(readlink -f ${(%):-%x}))
+[[ ! -f $ZSHRC_DIR/.p10k.zsh ]] || source $ZSHRC_DIR/.p10k.zsh
+export PATH=$PATH:$ZSHRC_DIR/bin
+
+# local configuration
 if [ -f ~/.paths ]; then
     source ~/.paths
 fi
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
