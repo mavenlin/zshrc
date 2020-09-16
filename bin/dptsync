@@ -1,0 +1,1 @@
+dptrp1 --addr "["$(avahi-resolve -n digitalpaper.local | cut -f2)"%dptrp1]" sync ~/dptrp1
