@@ -34,7 +34,7 @@
     # =========================[ Line #1 ]=========================
     # os_icon               # os identifier
     dir                     # current directory
-    vcs                     # git status
+    # vcs                     # git status
     # =========================[ Line #2 ]=========================
     newline                 # \n
     # prompt_char           # prompt symbol
@@ -820,7 +820,7 @@
   ##############[ taskwarrior: taskwarrior task count (https://taskwarrior.org/) ]##############
   # Taskwarrior color.
   typeset -g POWERLEVEL9K_TASKWARRIOR_FOREGROUND=74
-  
+
   # Taskwarrior segment format. The following parameters are available within the expansion.
   #
   # - P9K_TASKWARRIOR_PENDING_COUNT   The number of pending tasks: `task +PENDING count`.
