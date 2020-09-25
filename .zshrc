@@ -129,7 +129,7 @@ export TZ="/usr/share/zoneinfo/Canada/Eastern"
 
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-ZSHRC_DIR=$(dirname $(readlink -f ${(%):-%x}))
+ZSHRC_DIR=$(dirname $(readlink ${(%):-%x}))
 [[ ! -f $ZSHRC_DIR/.p10k.zsh ]] || source $ZSHRC_DIR/.p10k.zsh
 export PATH=$PATH:$ZSHRC_DIR/bin
 
