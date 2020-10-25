@@ -1,3 +1,0 @@
-#!/bin/bash
-sleep 2
-printf '%b' '\x01\x00\x00\x01\x00\x00\x00\x01\x01\x04' >> /dev/ttyACM0

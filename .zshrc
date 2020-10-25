@@ -121,7 +121,11 @@ case `uname` in
     alias emacs='[[ -z `pgrep -l -f "emacs.*daemon"` ]] && emacs --daemon; emacsclient -c -nw'
   ;;
   Linux)
-    alias emacs="emacs -nw" && alias emacs-gui="/usr/bin/emacs"
+    if [ -z ${INSIDE_EMACS+x} ]; then
+	alias emacs="emacs -nw" && alias emacs-gui="/usr/bin/emacs"
+    else
+	alias emacs="echo 'calling emacs in emacs, aborting'"
+    fi
   ;;
 esac
 
