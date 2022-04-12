@@ -122,7 +122,7 @@ case `uname` in
   ;;
   Linux)
     if [ -z ${INSIDE_EMACS+x} ]; then
-	alias emacs="emacs -nw" && alias emacs-gui="/usr/bin/emacs"
+	alias emacs="TERM=alacritty-direct emacs -nw" && alias emacs-gui="/usr/bin/emacs"
     else
 	alias emacs="echo 'calling emacs in emacs, aborting'"
     fi
