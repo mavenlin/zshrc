@@ -6,10 +6,10 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # Path to your oh-my-zsh installation.
-  export ZSH=~/.oh-my-zsh
+export ZSH=~/.oh-my-zsh
 
 if [ ! -d $ZSH ]; then
-    git clone https://github.com/robbyrussell/oh-my-zsh.git $ZSH
+    git clone https://github.com/ohmyzsh/ohmyzsh.git $ZSH
 fi
 if [ ! -f $ZSH/antigen.zsh ]; then
     curl -L git.io/antigen > $ZSH/antigen.zsh
@@ -111,14 +111,14 @@ antigen theme romkatv/powerlevel10k
 # Syntax highlighting bundle.
 # antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-completions
-antigen bundle zdharma/fast-syntax-highlighting
+antigen bundle zdharma-continuum/fast-syntax-highlighting
 # Tell Antigen that you're done.
 antigen apply
 
 # export VIRTUAL_ENV_DISABLE_PROMPT=12
 case `uname` in
   Darwin)
-    alias emacs='[[ -z `pgrep -l -f "emacs.*daemon"` ]] && emacs --daemon; emacsclient -c -nw'
+    # alias emacs='[[ -z `pgrep -l -f "emacs.*daemon"` ]] && emacs --daemon; emacsclient -c -nw'
   ;;
   Linux)
     if [ -z ${INSIDE_EMACS+x} ]; then
@@ -135,7 +135,7 @@ export TZ="/usr/share/zoneinfo/Canada/Eastern"
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 ZSHRC_DIR=$(dirname $(readlink ${(%):-%x}))
 [[ ! -f $ZSHRC_DIR/.p10k.zsh ]] || source $ZSHRC_DIR/.p10k.zsh
-export PATH=$PATH:$ZSHRC_DIR/bin
+export PATH=$PATH:$ZSHRC_DIR/bin:/opt/homebrew/bin:$HOME/.emacs.d/bin:$HOME/.local/bin
 
 # local configuration
 if [ -f ~/.paths ]; then
