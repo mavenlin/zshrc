@@ -129,7 +129,7 @@ case `uname` in
   ;;
 esac
 
-export TZ="/usr/share/zoneinfo/Canada/Eastern"
+export TZ="/usr/share/zoneinfo/Singapore"
 
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
