@@ -149,5 +149,7 @@ export NVM_DIR="$HOME/.nvm"
 export GDK_SCALE=2
 eval "$(zoxide init zsh)"
 
-# To customize prompt, run `p10k configure` or edit ~/zshrc/.p10k.zsh.
-[[ ! -f ~/zshrc/.p10k.zsh ]] || source ~/zshrc/.p10k.zsh
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/linmin/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/linmin/google-cloud-sdk/path.zsh.inc'; fi
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/linmin/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/linmin/google-cloud-sdk/completion.zsh.inc'; fi
