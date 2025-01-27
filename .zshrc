@@ -148,3 +148,6 @@ export NVM_DIR="$HOME/.nvm"
 
 export GDK_SCALE=2
 eval "$(zoxide init zsh)"
+
+# To customize prompt, run `p10k configure` or edit ~/zshrc/.p10k.zsh.
+[[ ! -f ~/zshrc/.p10k.zsh ]] || source ~/zshrc/.p10k.zsh
