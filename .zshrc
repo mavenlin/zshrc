@@ -122,7 +122,7 @@ case `uname` in
   ;;
   Linux)
     if [ -z ${INSIDE_EMACS+x} ]; then
-	alias emacs="TERM=alacritty-direct emacs -nw" && alias emacs-gui="/usr/bin/emacs"
+	alias emacs-gui="/usr/bin/emacs"
     else
 	alias emacs="echo 'calling emacs in emacs, aborting'"
     fi
@@ -135,7 +135,7 @@ export TZ="/usr/share/zoneinfo/Singapore"
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 ZSHRC_DIR=$(dirname $(readlink ${(%):-%x}))
 [[ ! -f $ZSHRC_DIR/.p10k.zsh ]] || source $ZSHRC_DIR/.p10k.zsh
-export PATH=$PATH:$ZSHRC_DIR/bin:/opt/homebrew/bin:$HOME/.emacs.d/bin:$HOME/.local/bin:/Library/TeX/texbin:/opt/clang-format-static
+export PATH=$HOME/.local/bin:$PATH:$ZSHRC_DIR/bin:/opt/homebrew/bin:$HOME/.emacs.d/bin:$HOME/.config/emacs/bin:/Library/TeX/texbin:/opt/clang-format-static
 
 # local configuration
 if [ -f ~/.paths ]; then
@@ -153,3 +153,5 @@ eval "$(zoxide init zsh)"
 if [ -f '/Users/linmin/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/linmin/google-cloud-sdk/path.zsh.inc'; fi
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/linmin/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/linmin/google-cloud-sdk/completion.zsh.inc'; fi
+
+export GEMINI_API_KEY=$(cat ~/.gemini)
