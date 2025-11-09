@@ -155,3 +155,4 @@ if [ -f '/Users/linmin/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/linmin/g
 if [ -f '/Users/linmin/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/linmin/google-cloud-sdk/completion.zsh.inc'; fi
 
 export GEMINI_API_KEY=$(cat ~/.gemini)
+export COLORTERM=truecolor
