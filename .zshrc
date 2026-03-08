@@ -4,7 +4,11 @@
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
-
+mkdir -p "${XDG_CACHE_HOME:-$HOME/.cache}/zsh"
+export ZSH_COMPDUMP="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/zcompdump-$HOST-$ZSH_VERSION"
+export ANTIGEN_COMPDUMP="$ZSH_COMPDUMP"
+mkdir -p "${XDG_STATE_HOME:-$HOME/.local/state}/zsh"
+export HISTFILE="${XDG_STATE_HOME:-$HOME/.local/state}/zsh/history"
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
 
@@ -58,15 +62,7 @@ fi
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(python pip virtualenv)
-
 # export MANPATH="/usr/local/man:$MANPATH"
-
-source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
   export LANG=en_US.UTF-8
@@ -107,6 +103,7 @@ antigen use oh-my-zsh
 antigen bundle pip
 antigen bundle python
 antigen bundle virtualenv
+antigen bundle nvm
 antigen theme romkatv/powerlevel10k
 # Syntax highlighting bundle.
 # antigen bundle zsh-users/zsh-syntax-highlighting
@@ -131,7 +128,6 @@ esac
 
 export TZ="/usr/share/zoneinfo/Singapore"
 
-
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 ZSHRC_DIR=$(dirname $(readlink ${(%):-%x}))
 [[ ! -f $ZSHRC_DIR/.p10k.zsh ]] || source $ZSHRC_DIR/.p10k.zsh
@@ -142,10 +138,6 @@ if [ -f ~/.paths ]; then
     source ~/.paths
 fi
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 export GDK_SCALE=2
 eval "$(zoxide init zsh)"
 
@@ -154,5 +146,5 @@ if [ -f '/Users/linmin/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/linmin/g
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/linmin/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/linmin/google-cloud-sdk/completion.zsh.inc'; fi
 
-export GEMINI_API_KEY=$(cat ~/.gemini)
 export COLORTERM=truecolor
+export HF_TOKEN=$(cat "$HOME/.hf_token")
