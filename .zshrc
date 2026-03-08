@@ -100,10 +100,12 @@ source ~/.oh-my-zsh/antigen.zsh
 antigen use oh-my-zsh
 
 # python plugins
+export NVM_DIR="$HOME/.nvm"
+zstyle ':omz:plugins:nvm' lazy yes
 antigen bundle pip
 antigen bundle python
 antigen bundle virtualenv
-antigen bundle nvm
+antigen bundle robbyrussell/oh-my-zsh plugins/nvm
 antigen theme romkatv/powerlevel10k
 # Syntax highlighting bundle.
 # antigen bundle zsh-users/zsh-syntax-highlighting
@@ -148,3 +150,4 @@ if [ -f '/Users/linmin/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/li
 
 export COLORTERM=truecolor
 export HF_TOKEN=$(cat "$HOME/.hf_token")
+source ~/venv/bin/activate
