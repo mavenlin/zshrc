@@ -102,6 +102,7 @@ antigen use oh-my-zsh
 # python plugins
 export NVM_DIR="$HOME/.nvm"
 zstyle ':omz:plugins:nvm' lazy yes
+zstyle ':omz:plugins:nvm' lazy-cmd codex
 antigen bundle pip
 antigen bundle python
 antigen bundle virtualenv
@@ -131,9 +132,9 @@ esac
 export TZ="/usr/share/zoneinfo/Singapore"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-ZSHRC_DIR=$(dirname $(readlink ${(%):-%x}))
-[[ ! -f $ZSHRC_DIR/.p10k.zsh ]] || source $ZSHRC_DIR/.p10k.zsh
-export PATH=$HOME/.local/bin:$PATH:$ZSHRC_DIR/bin:/opt/homebrew/bin:$HOME/.emacs.d/bin:$HOME/.config/emacs/bin:/Library/TeX/texbin:/opt/clang-format-static
+ZSHRC_DIR=${${(%):-%x}:A:h}
+[[ ! -f "$ZSHRC_DIR/.p10k.zsh" ]] || source "$ZSHRC_DIR/.p10k.zsh"
+export PATH=$HOME/.local/bin:$PATH:$ZSHRC_DIR/bin:/opt/homebrew/bin:/opt/homebrew/sbin:$HOME/.emacs.d/bin:$HOME/.config/emacs/bin:/Library/TeX/texbin:/opt/clang-format-static
 
 # local configuration
 if [ -f ~/.paths ]; then
@@ -144,10 +145,24 @@ export GDK_SCALE=2
 eval "$(zoxide init zsh)"
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/linmin/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/linmin/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/google-cloud-sdk/path.zsh.inc"; fi
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/linmin/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/linmin/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/google-cloud-sdk/completion.zsh.inc"; fi
+
+# NVM is loaded lazily by the oh-my-zsh nvm plugin above.
 
 export COLORTERM=truecolor
-export HF_TOKEN=$(cat "$HOME/.hf_token")
-source ~/venv/bin/activate
+if [[ -r "$HOME/.hf_token" ]]; then
+  export HF_TOKEN="$(<"$HOME/.hf_token")"
+fi
+export NOTION_ROOT_PAGE="https://www.notion.so/Onboarding-32b2748a446e809c8910dfe03043e264"
+if [[ -r "$HOME/venv/bin/activate" ]]; then
+  source "$HOME/venv/bin/activate"
+fi
+
+# The next line updates PATH for Nebius CLI.
+if [ -f "$HOME/.nebius/path.zsh.inc" ]; then source "$HOME/.nebius/path.zsh.inc"; fi
+
+if [[ -r "$HOME/.local/bin/env" ]]; then
+  source "$HOME/.local/bin/env"
+fi
