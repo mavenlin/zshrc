@@ -134,11 +134,6 @@ export TZ="/usr/share/zoneinfo/Singapore"
 ZSHRC_DIR=${${(%):-%x}:A:h}
 [[ ! -f "$ZSHRC_DIR/.p10k.zsh" ]] || source "$ZSHRC_DIR/.p10k.zsh"
 export PATH=$HOME/.local/bin:$PATH:$ZSHRC_DIR/bin:/opt/homebrew/bin:/opt/homebrew/sbin:$HOME/.emacs.d/bin:$HOME/.config/emacs/bin:/Library/TeX/texbin:/opt/clang-format-static
-codex_bins=("$NVM_DIR"/versions/node/*/bin/codex(N))
-if (( ${#codex_bins} )); then
-  export PATH="${codex_bins[-1]:h}:$PATH"
-fi
-unset codex_bins
 
 # local configuration
 if [ -f ~/.paths ]; then
