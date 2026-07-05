@@ -1,0 +1,15 @@
+# Keep non-interactive ssh commands able to find Codex installed under nvm.
+codex_bin_dir=
+for codex_bin in "$HOME"/.nvm/versions/node/*/bin/codex; do
+  [ -x "$codex_bin" ] || continue
+  codex_bin_dir="${codex_bin%/codex}"
+done
+
+if [ -n "$codex_bin_dir" ]; then
+  case ":$PATH:" in
+    *":$codex_bin_dir:"*) ;;
+    *) export PATH="$codex_bin_dir:$PATH" ;;
+  esac
+fi
+
+unset codex_bin codex_bin_dir
